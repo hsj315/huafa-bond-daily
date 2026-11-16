@@ -65,8 +65,8 @@ function heat(id, rows, vmin, vmax, fmt, clickCb, pieces, palette){
   const ch = echarts.init(document.getElementById(id));
   ch.setOption({
     tooltip:{formatter:p=>rows[p.value[1]].name+' '+D.days[p.value[0]]+': '+fmt(p.value[2])},
-    grid:{left:150,right:60,top:10,bottom:60},
-    xAxis:{type:'category',data:D.days,position:'top',axisLabel:{fontSize:11}},
+    grid:{left:150,right:60,top:36,bottom:60},
+    xAxis:{type:'category',data:D.days,position:'top',axisLabel:{fontSize:12,fontWeight:'bold',margin:8}},
     yAxis:{type:'category',data:rows.map(r=>r.name),inverse:true,axisLabel:{fontSize:11}},
     visualMap: pieces
       ? {type:'piecewise',pieces:pieces,orient:'vertical',right:0,top:'center',itemWidth:14,itemHeight:10,textStyle:{fontSize:10}}
