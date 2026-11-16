@@ -78,8 +78,8 @@ function heat(id, rows, vmin, vmax, fmt, clickCb, pieces, palette){
   ch.setOption({
     tooltip:{formatter:p=>rows[p.value[1]].name+' '+D.days[p.value[0]]+': '+fmt(p.value[2])},
     grid:{left:150,right:60,top:36,bottom:60},
-    xAxis:{type:'category',data:D.days,position:'top',axisLabel:{fontSize:12,fontWeight:'bold',margin:8}},
-    yAxis:{type:'category',data:rows.map(r=>r.name),inverse:true,
+    xAxis:{type:'category',data:D.days,position:'top',axisTick:{show:false},axisLine:{show:false},axisLabel:{fontSize:12,fontWeight:'bold',margin:8}},
+    yAxis:{type:'category',data:rows.map(r=>r.name),inverse:true,axisTick:{show:false},axisLine:{show:false},
       axisLabel:{fontSize:11,formatter:(val,idx)=>rows[idx]&&rows[idx].isCat?'{b|'+val+'}':val,
                  rich:{b:{fontWeight:'bold',fontSize:12,color:'#1a1a1a'}}}},
     visualMap: pieces
