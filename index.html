@@ -62,7 +62,9 @@ const PRICE_PIECES = [
 function heat(id, rows, vmin, vmax, fmt, clickCb, pieces, palette){
   const data = [];
   rows.forEach((r,i)=>r.vals.forEach((v,j)=>{ if(v!==null) data.push([j,i,v]); }));
-  const ch = echarts.init(document.getElementById(id));
+  const el = document.getElementById(id);
+  el.style.height = Math.max(320, rows.length*22 + 90) + 'px';  // 按行数动态撑高
+  const ch = echarts.init(el);
   ch.setOption({
     tooltip:{formatter:p=>rows[p.value[1]].name+' '+D.days[p.value[0]]+': '+fmt(p.value[2])},
     grid:{left:150,right:60,top:36,bottom:60},
