@@ -69,7 +69,7 @@ const PRICE_PIECES = [
   {min:80, max:90, color:'#f5b9b1', label:'80-90'},
   {min:90, max:98, color:'#d4efdf', label:'90-98'},
   {min:98, color:'#1e8449', label:'>=98'}];
-function heat(id, rows, vmin, vmax, fmt, clickCb, pieces, palette){
+function heat(id, rows, vmin, vmax, fmt, clickCb, pieces, palette, left){
   const data = [];
   rows.forEach((r,i)=>r.vals.forEach((v,j)=>{ if(v!==null) data.push([j,i,v]); }));
   const el = document.getElementById(id);
@@ -77,9 +77,9 @@ function heat(id, rows, vmin, vmax, fmt, clickCb, pieces, palette){
   const ch = echarts.init(el);
   ch.setOption({
     tooltip:{formatter:p=>rows[p.value[1]].name+' '+D.days[p.value[0]]+': '+fmt(p.value[2])},
-    grid:{left:150,right:60,top:36,bottom:60},
+    grid:{left:left||150,right:60,top:36,bottom:60},
     xAxis:{type:'category',data:D.days,position:'top',axisTick:{show:false},axisLine:{show:false},axisLabel:{fontSize:12,fontWeight:'bold',margin:8}},
-    yAxis:{type:'category',data:rows.map(r=>r.name),inverse:true,axisTick:{show:false},axisLine:{show:false},
+    yAxis:{type:'category',data:rows.map(r=>r.tenor?r.name+'（'+r.tenor+'）':r.name),inverse:true,axisTick:{show:false},axisLine:{show:false},
       axisLabel:{fontSize:11,formatter:(val,idx)=>rows[idx]&&rows[idx].isCat?'{b|'+val+'}':val,
                  rich:{b:{fontWeight:'bold',fontSize:12,color:'#1a1a1a'}}}},
     visualMap: pieces
@@ -143,7 +143,7 @@ if(MOB){
   mobileCards('contMobile', D.cont, -20, 250, C_RED, v=>Math.round(v)+'bp', r=>'', true);
 } else {
 heat('priceHeat', D.price, 25, 105, v=>v.toFixed(2),
-  r=>line('priceLine', r.name+'（'+r.tag+' · '+r.tenor+'）最低净价', D.days, r.vals), null, C_PRICE);
+  r=>line('priceLine', r.name+'（'+r.tag+' · '+r.tenor+'）最低净价', D.days, r.vals), null, C_PRICE, 210);
 heat('contHeat', D.cont, -20, 250, v=>Math.round(v),
   r=>line('contLine', r.name+'（'+r.cat+'）日度最大偏离 bp', D.days, r.vals));
 }
