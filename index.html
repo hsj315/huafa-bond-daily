@@ -7,6 +7,7 @@
 <script src="echarts.min.js"></script>
 <style>
   body{font-family:"Microsoft YaHei",sans-serif;background:#f5f6f8;color:#1a1a1a;margin:0;padding:16px;}
+  @media(max-width:700px){body{padding:8px}h1{font-size:18px}.chart{min-width:0}}
   h1{font-size:22px;text-align:center;margin:6px 0 2px;}
   .sub{text-align:center;color:#888;font-size:12px;margin-bottom:14px;}
   h2{font-size:16px;border-left:4px solid #c0392b;padding-left:8px;margin:22px 0 6px;}
@@ -38,11 +39,11 @@
 <table class="news"><tr><th style="width:70px">日期</th><th>事件</th><th style="width:60px">定性</th></tr><tr><td>11-10</td><td>惠誉将华发集团发行人违约评级自BBB下调至BB+（跌入投机级），高级无抵押债同步下调、永续债BBB-下调至BB</td><td class="neg">负面</td></tr><tr><td>11-10</td><td>华发股份公告不再委托联合资信，联合资信于当日终止主体及相关债项评级</td><td class="neg">负面</td></tr><tr><td>11-10</td><td>远东资信维持华发股份AAA，将主体及16只债项列入信用评级观察名单</td><td class="neg">负面</td></tr><tr><td>11-11</td><td>向格力集团转让珠海投控96.28%股权及珠海免税集团23%股权完成工商变更，格力间接控股珠免集团44.95%，珠免集团停牌筹划收购免税集团剩余49%股权</td><td class="pos">纾困</td></tr><tr><td>11-11</td><td>向格力集团、珠海交控转让珠海铧创部分股权（拟交易45.70亿元）；酒店、教育、商业地产资产纳入出售计划</td><td class="pos">纾困</td></tr><tr><td>11-11</td><td>广东省政府协调华发与各贷款机构谈判非标展期（部分偿还本金+展期+降息）；珠海市政府筹划收购华发金融资产、商业地产、港口及收费公路资产；华发持有地方政府拖欠应收账款超100亿元</td><td class="pos">纾困</td></tr></table>
 
 <h2>二、华发系成交（当日最低净价，元；越红价格越低，点击看单券走势）</h2>
-<div id="priceHeat" class="chart"></div>
+<div style="overflow-x:auto;-webkit-overflow-scrolling:touch"><div id="priceHeat" class="chart" style="min-width:980px"></div></div>
 <div id="priceLine" class="chart" style="display:none;height:380px;margin-top:10px"></div>
 
 <h2>三、传染观察名单（成交-中债最大偏离，bp；越红偏离越大，点击看单主体走势）</h2>
-<div id="contHeat" class="chart"></div>
+<div style="overflow-x:auto;-webkit-overflow-scrolling:touch"><div id="contHeat" class="chart" style="min-width:980px"></div></div>
 <div id="contLine" class="chart" style="display:none;height:380px;margin-top:10px"></div>
 
 
