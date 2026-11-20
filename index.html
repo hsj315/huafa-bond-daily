@@ -162,7 +162,10 @@ let sprReady=false;
 function initSpread(){
   if(sprReady) return; sprReady=true;
   if(!MOB){
-    const rows=[]; D.spread_cats.forEach(c=>{rows.push({name:'【'+c.cat+'】',isCat:true,vals:null});c.rows.forEach(r=>rows.push({name:r.name,vals:r.vals}));});
+    const rows=[]; D.spread_cats.forEach(c=>{
+      rows.push({name:'【'+c.cat+'】',isCat:true,vals:null});
+      c.rows.slice().sort((a,b)=>(b.vals[b.vals.length-1]||-1)-(a.vals[a.vals.length-1]||-1)).forEach(r=>rows.push({name:r.name,vals:r.vals}));
+    });
     const data=[]; let ri=0;
     rows.forEach(r=>{if(!r.isCat) r.vals.forEach((v,j)=>{if(v!==null)data.push([j,ri,v]);}); ri++;});
     const sprEl=document.getElementById('sprHeat');
@@ -186,7 +189,7 @@ function initSpread(){
     let html=lab;
     D.spread_cats.forEach(c=>{
       html+='<div class="mcat">【'+c.cat+'】</div>'+lab;
-      c.rows.forEach(r=>{
+      c.rows.slice().sort((a,b)=>(b.vals[b.vals.length-1]||-1)-(a.vals[a.vals.length-1]||-1)).forEach(r=>{
         const cells=r.vals.map(v=>v===null?'<div class="mc" style="background:#fafafa;color:#ddd">--</div>':'<div class="mc" style="background:'+colorOf(v,0,250,C_RED)+'">'+v+'</div>').join('');
         html+='<div class="mcard" data-i="'+SPALL.findIndex(a=>a.name===r.name)+'"><div class="mhead"><span>'+r.name+'</span><span class="mtoday">'+r.vals[r.vals.length-1]+'bp</span></div><div class="mstrip">'+cells+'</div></div>';
       });
