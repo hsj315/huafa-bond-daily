@@ -61,7 +61,7 @@
 <div id="contMobile"></div>
 </div>
 <div id="sprView" style="display:none;">
-<div style="overflow-x:auto;-webkit-overflow-scrolling:touch"><div id="sprHeat" class="chart" style="min-width:980px"></div></div>
+<div style="overflow-x:auto;-webkit-overflow-scrolling:touch"><div id="sprHeat" class="chart" style="min-width:1150px"></div></div>
 <div id="sprMobile"></div>
 </div>
 <div id="contLine" class="chart" style="display:none;height:380px;margin-top:10px"></div>
@@ -168,7 +168,7 @@ function initSpread(){
     const ch=echarts.init(document.getElementById('sprHeat'));
     ch.setOption({
       tooltip:{formatter:p=>rows[p.value[1]].name+' '+D.days[p.value[0]]+': '+p.value[2]+'bp'},
-      grid:{left:180,right:60,top:36,bottom:60},
+      grid:{left:230,right:60,top:36,bottom:60},
       xAxis:{type:'category',data:D.days,position:'top',axisTick:{show:false},axisLine:{show:false},axisLabel:{fontSize:12,fontWeight:'bold',margin:8}},
       yAxis:{type:'category',data:rows.map(r=>r.name),inverse:true,axisTick:{show:false},axisLine:{show:false},
         axisLabel:{fontSize:11,formatter:(val,idx)=>rows[idx]&&rows[idx].isCat?'{b|'+val+'}':val,rich:{b:{fontWeight:'bold',fontSize:12}}}},
